@@ -8,5 +8,17 @@ function updateClock() {
     document.getElementById('clock').innerHTML = hours + ':' + minutes + ':' + seconds;
     setTimeout(updateClock, 1000);
 }
+document.getElementById('fullscreenButton').addEventListener('click', toggleFullscreen);
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
+
 
 updateClock();
