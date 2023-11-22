@@ -9,14 +9,19 @@ body {
 #clock {
     font-family: 'Arial', sans-serif;
     color: #333;
-    font-size: 150px; /* フォントサイズを大きくします */
-    text-align: center; /* テキストを中央揃えにします */
+    font-size: 150px;
+    text-align: center;
     margin-top: 20px;
-    width: 100%; /* 幅を100%に設定して、親要素の中央に配置 */
-    position: absolute; /* 絶対位置指定 */
-    top: 50%; /* 上から50%の位置 */
-    left: 50%; /* 左から50%の位置 */
-    transform: translate(-50%, -50%); /* 位置を正確に中央に調整 */
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('totoro.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-weight: bold; /* フォントの濃さを太くします */
 }
 .hidden {
     display: none;
