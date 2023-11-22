@@ -1,3 +1,11 @@
+body {
+    background-image: url('totoro.gif'); /* 画像のURLを設定 */
+    background-size: cover; /* 画像が要素全体を覆うように調整 */
+    background-repeat: no-repeat; /* 画像の繰り返しを防止 */
+    background-position: center; /* 画像を中央に配置 */
+    background-attachment: fixed; /* 背景画像がスクロールに連動しないように固定 */
+}
+
 #clock {
     font-family: 'Arial', sans-serif;
     color: #333;
@@ -9,10 +17,6 @@
     top: 50%; /* 上から50%の位置 */
     left: 50%; /* 左から50%の位置 */
     transform: translate(-50%, -50%); /* 位置を正確に中央に調整 */
-    background-image: url('totoro.gif'); /* 画像のURLを設定 */
-    background-size: cover; /* 画像が要素全体を覆うように調整 */
-    background-repeat: no-repeat; /* 画像の繰り返しを防止 */
-    background-position: center; /* 画像を中央に配置 */
 }
 .hidden {
     display: none;
