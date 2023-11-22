@@ -10,3 +10,7 @@
     left: 50%; /* 左から50%の位置 */
     transform: translate(-50%, -50%); /* 位置を正確に中央に調整 */
 }
+.hidden {
+    display: none;
+}
+
