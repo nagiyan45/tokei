@@ -9,7 +9,7 @@
     top: 50%; /* 上から50%の位置 */
     left: 50%; /* 左から50%の位置 */
     transform: translate(-50%, -50%); /* 位置を正確に中央に調整 */
-    background-image: url('https://github.com/nagiyan45/tokei/blob/main/%E3%82%B8%E3%83%96%E3%83%AA.gif'); /* 画像のURLを設定 */
+    background-image: url('ziburi.gif'); /* 画像のURLを設定 */
     background-size: cover; /* 画像が要素全体を覆うように調整 */
     background-repeat: no-repeat; /* 画像の繰り返しを防止 */
     background-position: center; /* 画像を中央に配置 */
