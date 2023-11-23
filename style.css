@@ -17,11 +17,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: url('totoro.gif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-weight: bold; /* フォントの濃さを太くします */
 }
 .hidden {
     display: none;
