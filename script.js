@@ -24,12 +24,14 @@ function updateClockColor() {
     var minutes = now.getMinutes();
     var clockElement = document.getElementById('clock');
 
-    if (hours >= 22 && minutes >= 30 || hours < 7) {
-        clockElement.style.color = 'red'; // 22:30を過ぎたら、または7:00前なら赤色に
+    // 22:30を過ぎている、または7:00前である場合、赤色にする
+    if ((hours > 22 || (hours === 22 && minutes >= 30)) || hours < 7) {
+        clockElement.style.color = 'red';
     } else {
         clockElement.style.color = 'yellow'; // それ以外の時間は黄色に
     }
 }
+
 // 時計を更新する機能
 function updateClock() {
     var now = new Date();
