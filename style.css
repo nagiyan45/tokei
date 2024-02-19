@@ -1,0 +1,35 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0; /* 背景色はお好みで */
+}
+
+.form-container {
+    width: 300px; /* フォームの幅 */
+    padding: 40px;
+    background: #ffffff; /* フォームの背景色 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 影を追加して立体感を出す */
+    border-radius: 8px; /* フォームの角を丸くする */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* 入力フィールドの幅をフォームの幅に合わせる */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px; /* 入力フィールドの角を丸くする */
+    border: 1px solid #ddd; /* 枠線を指定 */
+}
+
+button[type="submit"] {
+    width: 100%; /* ボタンの幅をフォームの幅に合わせる */
+    padding: 10px;
+    background-color: #007bff; /* ボタンの背景色 */
+    color: white; /* ボタンのテキスト色 */
+    border: none;
+    border-radius: 5px; /* ボタンの角を丸くする */
+    cursor: pointer;
+}
