@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>カウントダウンタイマー</title>
+    <link rel="stylesheet" type="text/css" href="style02.css">
+</head>
+
+<body>
+    <div id="input-container">
+        <input type="datetime-local" id="datetimeInput">
+        <button onclick="setCountdown()">カウントダウン開始</button>
+    </div>
+    <div id="countdown">
+        <p id="timer"></p>
+    </div>
+
+    <div id="buttons-container">
+    <button id="fullscreenButton" onclick="toggleFullscreen()" style="display:none;">全画面表示</button>
+    <button id="stopButton" onclick="stopCountdown()" style="display:none;">停止</button>
+    <button id="resetButton" onclick="resetCountdown()" style="display:none;">リセット</button>
+</div>
+
+    <button id="stopButton" onclick="stopCountdown()" style="display:none;">停止</button>
+    <button id="resetButton" onclick="resetCountdown()" style="display:none;">リセット</button>
+
+<button id="fullscreenButton" onclick="toggleFullscreen()" style="display:none;">全画面表示</button>
+
+    <script src="countdown.js"></script>
+</body>
+</html>
