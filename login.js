@@ -6,7 +6,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
     // 特定のユーザー名とパスワードをチェック
     if (username === "110higashiurawa" && password === "11541154g") {
-        window.location.href = 'style02.css'; // リダイレクト先のページ
+        window.location.href = 'coutdown.html'; // リダイレクト先のページ
     } else {
         alert('ユーザー名またはパスワードが間違っています。');
     }
