@@ -1,0 +1,57 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* 要素を縦方向に整列させる */
+    font-family: Arial, sans-serif; /* フォントファミリーを指定 */
+    background: #f0f0f0; /* 背景色 */
+}
+
+#countdown {
+    text-align: center;
+    font-size: 100px; /* カウントダウンの文字サイズを大きくする */
+    margin-bottom: 15px; /* 下のボタンとの間隔 */
+}
+
+#input-container, #stopButton, #resetButton, #fullscreenButton {
+    font-size: 20px; /* 入力フィールドとボタンの文字サイズ */
+    margin: 10px 0; /* 余白を設定 */
+}
+
+input[type="datetime-local"], button {
+    padding: 10px;
+    margin: 5px; /* 余白を設定 */
+    border: 1px solid #ccc;
+    border-radius: 5px; /* 角を丸くする */
+    cursor: pointer; /* ボタンにマウスオーバーしたときのカーソルを指に */
+}
+
+button {
+    background-color: #007bff; /* ボタンの背景色 */
+    color: white; /* ボタンの文字色 */
+    border: none;
+}
+
+#buttons-container {
+    display: flex; /* Flexboxを使用してボタンを横に並べる */
+    justify-content: center; /* 中央揃え */
+    gap: 10px; /* ボタン間の間隔 */
+}
+
+#buttons-container button {
+    padding: 12px 24px; /* ボタンのパディングを調整 */
+    font-size: 18px; /* ボタン内のテキストサイズを大きく */
+    width: 150px; /* ボタンの幅を指定 */
+    height: 50px; /* ボタンの高さを指定 */
+    border-radius: 5px; /* ボタンの角を丸くする */
+}
+
+body {
+    background-image: url('C:\Users\hiro-\Desktop\ログイン\kauntodaun.gif'); /* 背景に設定するGIF画像のパス */
+    background-size: cover; /* 画像がコンテナを完全に覆うようにサイズを調整 */
+    background-position: center; /* 背景画像を中央に配置 */
+    background-repeat: no-repeat; /* 背景画像が繰り返されないように設定 */
+}
+
