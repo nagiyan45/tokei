@@ -7,10 +7,12 @@
 
 <body>
     <div id="input-container">
+        <input type="text" id="countdownTitle" placeholder="カウントダウンのタイトルを入力">
         <input type="datetime-local" id="datetimeInput">
         <button onclick="setCountdown()">カウントダウン開始</button>
     </div>
     <div id="countdown">
+        <h2 id="countdownTitleText"></h2> <!-- カウントダウンのタイトルを表示する要素 -->
         <p id="timer"></p>
     </div>
 
