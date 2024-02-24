@@ -73,6 +73,7 @@ function resetCountdown() {
     if (confirmReset) {
         if (x) clearInterval(x);
         document.getElementById('timer').innerHTML = "";
+        document.getElementById('countdownTitleText').textContent = ""; // タイトルテキストをクリア
         document.getElementById('input-container').style.display = 'block';
         document.getElementById('fullscreenButton').style.display = 'none';
         document.getElementById('stopButton').style.display = 'none';
@@ -80,6 +81,7 @@ function resetCountdown() {
         document.body.style.backgroundImage = "none"; // 背景を初期状態に戻す
     }
 }
+
 
 function toggleFullscreen() {
     if (!document.fullscreenElement) {
