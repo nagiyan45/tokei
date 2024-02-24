@@ -6,8 +6,13 @@ body, html {
     align-items: center;
     flex-direction: column; /* 要素を縦方向に整列させる */
     font-family: Arial, sans-serif; /* フォントファミリーを指定 */
-    background: #f0f0f0; /* 背景色 */
+    background: #f0f0f0; /* 初期背景色 */
+    /* background-image: url('kauntodaun.gif'); 背景GIFはJSで動的に設定 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 
 #countdown {
     text-align: center;
