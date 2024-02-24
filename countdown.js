@@ -85,4 +85,19 @@ function resetCountdown() {
 function toggleFullscreen() {
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(err => {
-            alert(`エラーが発生
+            alert(`エラーが発生しました: ${err.message} (${err.name})`);
+        });
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+}
+
+// 全画面表示状態の変更を検知してボタンの表示を制御
+document.addEventListener('fullscreenchange', function() {
+    var isFullscreen = document.fullscreenElement != null;
+    document.getElementById('stopButton').style.display = isFullscreen ? 'none' : 'inline';
+    document.getElementById('resetButton').style.display = isFullscreen ? 'none' : 'inline';
+    document.getElementById('fullscreenButton').style.display = isFullscreen ? 'none' : 'inline';
+});
