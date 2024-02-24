@@ -2,13 +2,19 @@ var x; // カウントダウン用のインターバルを格納する変数
 var countDownDate; // カウントダウンの目標日時を格納する変数
 var isPaused = false; // カウントダウンが一時停止されているかのフラグ
 
-// カウントダウンを設定する関数
+document.addEventListener('DOMContentLoaded', function() {
+    // カウントダウン開始ボタンにクリックイベントリスナーを設定
+    document.getElementById('startButton').addEventListener('click', setCountdown);
+});
+
 function setCountdown() {
     var title = document.getElementById('countdownTitle').value; // タイトル入力フィールドから値を取得
     var datetimeInput = document.getElementById('datetimeInput').value;
     countDownDate = new Date(datetimeInput).getTime();
-     // カウントダウンのタイトルを設定
-    document.getElementById('countdownTitleText').textContent = title; // タイトルを表示
+
+    // カウントダウンのタイトルを設定
+    document.getElementById('countdownTitleText').textContent = title;
+
     // 背景GIFを設定
     document.body.style.backgroundImage = "url('kauntodaun.gif')";
     document.body.style.backgroundSize = "cover";
@@ -26,23 +32,19 @@ function setCountdown() {
     updateCountdown();
 }
 
-// カウントダウンを更新する関数
 function updateCountdown() {
     if (x) clearInterval(x);
     x = setInterval(function() {
         var now = new Date().getTime();
         var distance = countDownDate - now;
 
-        // 日、時間、分、秒を計算
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // 結果を表示
         document.getElementById("timer").innerHTML = days + "日 " + hours + "時間 " + minutes + "分 " + seconds + "秒 ";
 
-        // カウントダウンが終了したら
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("timer").innerHTML = "EXPIRED";
@@ -50,7 +52,6 @@ function updateCountdown() {
     }, 1000);
 }
 
-// カウントダウンを停止する関数
 function stopCountdown() {
     if (!isPaused) {
         clearInterval(x);
@@ -60,7 +61,6 @@ function stopCountdown() {
     }
 }
 
-// カウントダウンを再開する関数
 function resumeCountdown() {
     isPaused = false;
     document.getElementById('stopButton').innerText = '停止';
@@ -68,7 +68,6 @@ function resumeCountdown() {
     updateCountdown();
 }
 
-// カウントダウンをリセットする関数
 function resetCountdown() {
     var confirmReset = confirm("本当にリセットしますか？");
     if (confirmReset) {
@@ -78,12 +77,10 @@ function resetCountdown() {
         document.getElementById('fullscreenButton').style.display = 'none';
         document.getElementById('stopButton').style.display = 'none';
         document.getElementById('resetButton').style.display = 'none';
-        // 背景を初期状態に戻す（オプション）
-        document.body.style.backgroundImage = "none";
+        document.body.style.backgroundImage = "none"; // 背景を初期状態に戻す
     }
 }
 
-// 全画面表示の切り替え関数
 function toggleFullscreen() {
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(err => {
@@ -96,7 +93,6 @@ function toggleFullscreen() {
     }
 }
 
-// 全画面表示状態の変更を検知してボタンの表示を制御
 document.addEventListener('fullscreenchange', function() {
     var isFullscreen = document.fullscreenElement != null;
     document.getElementById('stopButton').style.display = isFullscreen ? 'none' : 'inline';
