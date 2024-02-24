@@ -99,3 +99,14 @@ document.addEventListener('fullscreenchange', function() {
     document.getElementById('resetButton').style.display = isFullscreen ? 'none' : 'inline';
     document.getElementById('fullscreenButton').style.display = isFullscreen ? 'none' : 'inline';
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('startButton').addEventListener('click', setCountdown);
+    
+    // リセットボタンのイベントリスナーを設定
+    document.getElementById('resetButton').addEventListener('click', resetCountdown);
+    
+    // フルスクリーンボタンのイベントリスナーを設定
+    document.getElementById('fullscreenButton').addEventListener('click', toggleFullscreen);
+});
+
