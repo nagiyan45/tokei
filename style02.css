@@ -49,9 +49,10 @@ button {
 }
 
 body {
-    background-image: url('kauntodaun.gif'); /* 背景に設定するGIF画像のパス */
-    background-size: cover; /* 画像がコンテナを完全に覆うようにサイズを調整 */
-    background-position: center; /* 背景画像を中央に配置 */
-    background-repeat: no-repeat; /* 背景画像が繰り返されないように設定 */
+    background-image: url('kauntodaun.gif'); /* 画像のURLを設定 */
+    background-size: cover; /* 画像が要素全体を覆うように調整 */
+    background-repeat: no-repeat; /* 画像の繰り返しを防止 */
+    background-position: center; /* 画像を中央に配置 */
+    background-attachment: fixed; /* 背景画像がスクロールに連動しないように固定 */
 }
 
