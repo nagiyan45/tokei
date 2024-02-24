@@ -48,11 +48,18 @@ button {
     border-radius: 5px; /* ボタンの角を丸くする */
 }
 
-body {
-    background-image: url('kauntodaun.gif'); /* 画像のURLを設定 */
-    background-size: cover; /* 画像が要素全体を覆うように調整 */
-    background-repeat: no-repeat; /* 画像の繰り返しを防止 */
-    background-position: center; /* 画像を中央に配置 */
-    background-attachment: fixed; /* 背景画像がスクロールに連動しないように固定 */
+html {
+    height: 100%;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('kauntodaun.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 
