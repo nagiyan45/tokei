@@ -55,6 +55,14 @@ button {
     border-radius: 5px; /* ボタンの角を丸くする */
 }
 
+#countdownTitleText {
+    font-size: 70px; /* フォントサイズを24pxに設定 */
+    font-weight: bold; /* テキストを太字に設定 */
+    color: #333; /* テキストの色を暗めのグレーに設定 */
+    text-align: center; /* テキストを中央揃えに設定 */
+    margin-bottom: 20px; /* 下の要素との間隔を20pxに設定 */
+}
+
 html {
     height: 100%;
 }
