@@ -4,17 +4,18 @@
     <title>カウントダウンタイマー</title>
     <link rel="stylesheet" type="text/css" href="style02.css">
 </head>
-
 <body>
-<div id="input-container">
-    <div>
-        <input type="text" id="countdownTitle" placeholder="カウントダウンのタイトルを入力">
+    <div id="input-container">
+        <div>
+            <label for="countdownTitle">カウントダウンのタイトルを入力:</label>
+            <input type="text" id="countdownTitle" placeholder="タイトル">
+        </div>
+        <div>
+            <label for="datetimeInput">日時を選択:</label>
+            <input type="datetime-local" id="datetimeInput">
+        </div>
+        <button id="startButton">カウントダウン開始</button>
     </div>
-    <div>
-        <input type="datetime-local" id="datetimeInput">
-    </div>
-    <button id="startButton">カウントダウン開始</button>
-</div>
 
     <div id="countdown">
         <h2 id="countdownTitleText"></h2> <!-- カウントダウンのタイトルを表示する要素 -->
@@ -22,15 +23,10 @@
     </div>
 
     <div id="buttons-container">
-    <button id="fullscreenButton" onclick="toggleFullscreen()" style="display:none;">全画面表示</button>
-    <button id="stopButton" onclick="stopCountdown()" style="display:none;">停止</button>
-    <button id="resetButton" onclick="resetCountdown()" style="display:none;">リセット</button>
-</div>
-
-    <button id="stopButton" onclick="stopCountdown()" style="display:none;">停止</button>
-    <button id="resetButton" onclick="resetCountdown()" style="display:none;">リセット</button>
-
-<button id="fullscreenButton" onclick="toggleFullscreen()" style="display:none;">全画面表示</button>
+        <button id="fullscreenButton" style="display:none;">全画面表示</button>
+        <button id="stopButton" style="display:none;">停止</button>
+        <button id="resetButton" style="display:none;">リセット</button>
+    </div>
 
     <script src="countdown.js"></script>
 </body>
