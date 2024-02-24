@@ -4,9 +4,11 @@ var isPaused = false; // カウントダウンが一時停止されているか�
 
 // カウントダウンを設定する関数
 function setCountdown() {
+    var title = document.getElementById('countdownTitle').value; // タイトル入力フィールドから値を取得
     var datetimeInput = document.getElementById('datetimeInput').value;
     countDownDate = new Date(datetimeInput).getTime();
-
+     // カウントダウンのタイトルを設定
+    document.getElementById('countdownTitleText').textContent = title; // タイトルを表示
     // 背景GIFを設定
     document.body.style.backgroundImage = "url('kauntodaun.gif')";
     document.body.style.backgroundSize = "cover";
