@@ -8,7 +8,7 @@ function setCountdown() {
     countDownDate = new Date(datetimeInput).getTime();
 
     // 背景GIFを設定
-    document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/nagiyan45/tokei/main/kauntodaun.gif')";
+    document.body.style.backgroundImage = "url('kauntodaun.gif')";
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
