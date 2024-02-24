@@ -16,7 +16,7 @@ body, html {
 
 #countdown {
     text-align: center;
-    font-size: 50px; /* カウントダウンの文字サイズを大きくする */
+    font-size: 70px; /* カウントダウンの文字サイズを大きくする */
     font-weight: bold; /* 文字を太くする */
     margin-bottom: 15px; /* 下のボタンとの間隔 */
     color: #FF0000; /* CSSカラーコードで赤色を指定 */
