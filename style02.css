@@ -49,7 +49,7 @@ button {
 }
 
 body {
-    background-image: url('https://github.com/nagiyan45/tokei/blob/main/kauntodaun.gif'); /* 背景に設定するGIF画像のパス */
+    background-image: url('kauntodaun.gif'); /* 背景に設定するGIF画像のパス */
     background-size: cover; /* 画像がコンテナを完全に覆うようにサイズを調整 */
     background-position: center; /* 背景画像を中央に配置 */
     background-repeat: no-repeat; /* 背景画像が繰り返されないように設定 */
