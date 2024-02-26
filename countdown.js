@@ -16,7 +16,7 @@ function setCountdown() {
     document.getElementById('countdownTitleText').textContent = title;
 
     // 背景GIFを設定
-    document.body.style.backgroundImage = "url('kauntodaun.gif')";
+    document.body.style.backgroundImage = "url('pajama.gif')";
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
