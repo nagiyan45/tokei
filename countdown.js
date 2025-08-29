@@ -174,7 +174,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const res = await fetch(API, { cache: "no-store" });
       if(!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      const code = data?.current?.weather_code;
+      const code =
+  data?.current?.weather_code ??
+  data?.current_weather?.weathercode ?? // 旧フィールド名フォールバック
+  null;
+if (code == null) return; // 取得失敗時は何もしない
+
       const tag = classifyWeather(code);
       const bg = pickBackground(tag);
       setBackground(bg);
@@ -194,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(fetchAndApplyWeather, POLL_MS);
   });
 })();
+
 
 
 
