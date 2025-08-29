@@ -2,10 +2,10 @@ var x; // カウントダウン用のインターバルを格納する変数
 var countDownDate; // カウントダウンの目標日時を格納する変数
 var isPaused = false; // カウントダウンが一時停止されているかのフラグ
 
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     // カウントダウン開始ボタンにクリックイベントリスナーを設定
     document.getElementById('startButton').addEventListener('click', setCountdown);
-});
+});*/
 
 function setCountdown() {
     var title = document.getElementById('countdownTitle').value; // タイトル入力フィールドから値を取得
@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(fetchAndApplyWeather, POLL_MS);
   });
 })();
+
 
 
 
