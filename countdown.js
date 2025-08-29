@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const LAT = 35.957;        // 野田市あたり
   const LON = 139.867;
   const POLL_MS = 10 * 60 * 1000; // 10分ごとに更新
-  const ASSETS = "./assets/"; // 画像を置くフォルダ（リポジトリ直下に /assets を作成）
+  const ASSETS = "./"; // 画像を置くフォルダ（リポジトリ直下に /assets を作成）
 
   // Open-Meteo: 天気コードと現在気温を取得
   const API = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,weather_code&forecast_days=1&timezone=Asia%2FTokyo`;
@@ -199,6 +199,7 @@ if (code == null) return; // 取得失敗時は何もしない
     setInterval(fetchAndApplyWeather, POLL_MS);
   });
 })();
+
 
 
 
