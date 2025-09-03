@@ -2,21 +2,19 @@ var x; // カウントダウン用のインターバルを格納する変数
 var countDownDate; // カウントダウンの目標日時を格納する変数
 var isPaused = false; // カウントダウンが一時停止されているかのフラグ
 
-/*document.addEventListener('DOMContentLoaded', function() {
-    // カウントダウン開始ボタンにクリックイベントリスナーを設定
-    document.getElementById('startButton').addEventListener('click', setCountdown);
-});*/
-
 function setCountdown() {
     var title = document.getElementById('countdownTitle').value; // タイトル入力フィールドから値を取得
     var datetimeInput = document.getElementById('datetimeInput').value;
+    if (!datetimeInput) {
+        alert("日時を入力してください。");
+        return;
+    }
     countDownDate = new Date(datetimeInput).getTime();
 
     // カウントダウンのタイトルを設定
     document.getElementById('countdownTitleText').textContent = title;
 
-    // 背景GIFを設定
-    //document.body.style.backgroundImage = "url('pajama.gif')";
+    // 背景の基本スタイル
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
@@ -28,6 +26,9 @@ function setCountdown() {
     document.getElementById('resetButton').style.display = 'inline';
     document.getElementById('stopButton').innerText = '停止';
     document.getElementById('stopButton').onclick = stopCountdown;
+
+    // ★ 追加：開始時に天気背景の更新を開始
+    window.__weather?.startWeather();
 
     updateCountdown();
 }
@@ -71,6 +72,9 @@ function resumeCountdown() {
 function resetCountdown() {
     var confirmReset = confirm("本当にリセットしますか？");
     if (confirmReset) {
+        // ★ 追加：天気更新を停止
+        window.__weather?.stopWeather();
+
         if (x) clearInterval(x);
         document.getElementById('timer').innerHTML = "";
         document.getElementById('countdownTitleText').textContent = ""; // タイトルテキストをクリア
@@ -78,10 +82,19 @@ function resetCountdown() {
         document.getElementById('fullscreenButton').style.display = 'none';
         document.getElementById('stopButton').style.display = 'none';
         document.getElementById('resetButton').style.display = 'none';
-        document.body.style.backgroundImage = "none"; // 背景を初期状態に戻す
+
+        // ★ 変更：完全な none ではなく、仮背景に戻す（存在する画像名に合わせてね）
+        document.body.style.backgroundImage = 'url("./cloudy_day.jpg")';
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        document.body.style.backgroundRepeat = "no-repeat";
+
+        // 状態初期化
+        isPaused = false;
+        x = null;
+        countDownDate = null;
     }
 }
-
 
 function toggleFullscreen() {
     if (!document.fullscreenElement) {
@@ -104,16 +117,15 @@ document.addEventListener('fullscreenchange', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('startButton').addEventListener('click', setCountdown);
-    
-    // リセットボタンのイベントリスナーを設定
     document.getElementById('resetButton').addEventListener('click', resetCountdown);
-    
-    // フルスクリーンボタンのイベントリスナーを設定
     document.getElementById('fullscreenButton').addEventListener('click', toggleFullscreen);
-});
 
-/* ======== 野田市の天気で背景を自動切替（Open-Meteo使用） ======== */
-/* APIキー不要・CORS対応。GitHub Pagesからfetch可能。 */
+    // 初期表示の仮背景（任意）
+    document.body.style.backgroundImage = 'url("./cloudy_day.jpg")';
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+});
 
 /* ======== 野田市の天気で背景を自動切替（Open-Meteo使用） ======== */
 (() => {
@@ -162,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log("[BG] loaded:", full);
     };
     img.onerror = () => console.warn("[BG] failed:", full);
-    img.src = full + `?v=${Date.now()}`;
+    img.src = full + `?v=${Date.now()}`; // キャッシュ回避
   }
 
   async function fetchAndApplyWeather(){
@@ -180,10 +192,12 @@ document.addEventListener('DOMContentLoaded', function() {
       setBackground(bg);
     }catch(e){
       console.warn("[Weather] fetch failed:", e);
+      // フォールバック（失敗時に見栄えを保つ）
+      setBackground("cloudy_day.jpg");
     }
   }
 
-  // ← 新規：開始・停止APIを用意
+  // 開始・停止API
   let weatherTimerId = null;
   function startWeather(){
     stopWeather();                // 多重起動防止
@@ -200,11 +214,3 @@ document.addEventListener('DOMContentLoaded', function() {
   // グローバルに公開（カウントダウン側から呼ぶ）
   window.__weather = { startWeather, stopWeather };
 })();
-
-
-
-
-
-
-
-
