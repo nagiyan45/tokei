@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }catch(e){
       console.warn("[Weather] fetch failed:", e);
       // フォールバック（失敗時に見栄えを保つ）
-      setBackground("cloudy_day.jpg");
+      setBackground("cloudy_day.gif");
     }
   }
 
@@ -214,4 +214,5 @@ document.addEventListener('DOMContentLoaded', function() {
   // グローバルに公開（カウントダウン側から呼ぶ）
   window.__weather = { startWeather, stopWeather };
 })();
+
 
