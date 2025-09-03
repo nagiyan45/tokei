@@ -115,29 +115,26 @@ document.addEventListener('DOMContentLoaded', function() {
 /* ======== 野田市の天気で背景を自動切替（Open-Meteo使用） ======== */
 /* APIキー不要・CORS対応。GitHub Pagesからfetch可能。 */
 
+/* ======== 野田市の天気で背景を自動切替（Open-Meteo使用） ======== */
 (() => {
-  // ▼設定
-  const LAT = 35.957;        // 野田市あたり
+  const LAT = 35.957;
   const LON = 139.867;
-  const POLL_MS = 10 * 60 * 1000; // 10分ごとに更新
-  const ASSETS = "./"; // 画像を置くフォルダ（リポジトリ直下に /assets を作成）
+  const POLL_MS = 10 * 60 * 1000;
+  const ASSETS = "./";
 
-  // Open-Meteo: 天気コードと現在気温を取得
   const API = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,weather_code&forecast_days=1&timezone=Asia%2FTokyo`;
 
-  // 天気コードを背景タグに分類
   function classifyWeather(code){
-    if (code === 0) return "clear";                 // 快晴
-    if ([1,2,3].includes(code)) return "cloudy";    // 晴れ/くもり
-    if ([45,48].includes(code)) return "fog";       // 霧
-    if ([51,53,55,56,57].includes(code)) return "drizzle"; // 霧雨
-    if ([61,63,65,66,67,80,81,82].includes(code)) return "rain"; // 雨
-    if ([71,73,75,77,85,86].includes(code)) return "snow"; // 雪
-    if ([95,96,99].includes(code)) return "thunder"; // 雷雨
+    if (code === 0) return "clear";
+    if ([1,2,3].includes(code)) return "cloudy";
+    if ([45,48].includes(code)) return "fog";
+    if ([51,53,55,56,57].includes(code)) return "drizzle";
+    if ([61,63,65,66,67,80,81,82].includes(code)) return "rain";
+    if ([71,73,75,77,85,86].includes(code)) return "snow";
+    if ([95,96,99].includes(code)) return "thunder";
     return "cloudy";
   }
 
-  // タグ→ファイル名（_day/_nightを自動出し分け）
   function pickBackground(tag){
     const hour = new Date().getHours();
     const isNight = (hour >= 18 || hour < 5);
@@ -151,54 +148,60 @@ document.addEventListener('DOMContentLoaded', function() {
       snow:     `snow${suffix}.jpg`,
       thunder:  `thunder${suffix}.jpg`,
     };
-    return map[tag] || map["cloudy"];
+    return map[tag] || map.cloudy;
   }
 
-  // 背景切替（チラつき防止のためプリロード）
   function setBackground(imageFile){
-    const url = `url("${ASSETS}${imageFile}")`;
+    const full = `${ASSETS}${imageFile}`;
     const img = new Image();
     img.onload = () => {
-      document.body.style.backgroundImage = url;
+      document.body.style.backgroundImage = `url("${full}")`;
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
       document.body.style.backgroundRepeat = "no-repeat";
-      // 既存コードのレイアウトに合わせて他は変更なし
+      console.log("[BG] loaded:", full);
     };
-    img.src = `${ASSETS}${imageFile}`;
+    img.onerror = () => console.warn("[BG] failed:", full);
+    img.src = full + `?v=${Date.now()}`;
   }
 
-  // 取得＆適用
   async function fetchAndApplyWeather(){
     try{
       const res = await fetch(API, { cache: "no-store" });
       if(!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       const code =
-  data?.current?.weather_code ??
-  data?.current_weather?.weathercode ?? // 旧フィールド名フォールバック
-  null;
-if (code == null) return; // 取得失敗時は何もしない
-
+        data?.current?.weather_code ??
+        data?.current_weather?.weathercode ?? null;
+      if (code == null) return;
       const tag = classifyWeather(code);
       const bg = pickBackground(tag);
+      console.log("[Weather]", { code, tag, bg });
       setBackground(bg);
-      // 任意：画面上に表示したい場合は、要素を作ってテキストを入れる処理を追加可能
-      // console.log(`野田市の現在：${tag} (code:${code})`);
     }catch(e){
-      // ネットワーク失敗時は何もしない（直前の背景を維持）
-      // console.error(e);
+      console.warn("[Weather] fetch failed:", e);
     }
   }
 
-  // 初期化：ページ読み込み時に即反映、以後定期更新
-  document.addEventListener('DOMContentLoaded', () => {
-    // 「pajama.gif」を最初の仮背景にしたい場合は既存コードのままでOK。
-    // この関数が成功すると自動で天気背景に上書きされます。
-    fetchAndApplyWeather();
-    setInterval(fetchAndApplyWeather, POLL_MS);
-  });
+  // ← 新規：開始・停止APIを用意
+  let weatherTimerId = null;
+  function startWeather(){
+    stopWeather();                // 多重起動防止
+    fetchAndApplyWeather();       // まず即時適用
+    weatherTimerId = setInterval(fetchAndApplyWeather, POLL_MS);
+  }
+  function stopWeather(){
+    if (weatherTimerId) {
+      clearInterval(weatherTimerId);
+      weatherTimerId = null;
+    }
+  }
+
+  // グローバルに公開（カウントダウン側から呼ぶ）
+  window.__weather = { startWeather, stopWeather };
 })();
+
+
 
 
 
