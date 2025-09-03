@@ -84,7 +84,7 @@ function resetCountdown() {
         document.getElementById('resetButton').style.display = 'none';
 
         // ★ 変更：完全な none ではなく、仮背景に戻す（存在する画像名に合わせてね）
-        document.body.style.backgroundImage = 'url("./cloudy_day.jpg")';
+        document.body.style.backgroundImage = 'url("./cloudy_day.gif")';
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundPosition = "center";
         document.body.style.backgroundRepeat = "no-repeat";
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('fullscreenButton').addEventListener('click', toggleFullscreen);
 
     // 初期表示の仮背景（任意）
-    document.body.style.backgroundImage = 'url("./cloudy_day.jpg")';
+    document.body.style.backgroundImage = 'url("./cloudy_day.gif")';
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundRepeat = "no-repeat";
@@ -214,5 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // グローバルに公開（カウントダウン側から呼ぶ）
   window.__weather = { startWeather, stopWeather };
 })();
+
 
 
