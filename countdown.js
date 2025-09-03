@@ -153,10 +153,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const suffix = isNight ? "_night" : "_day";
     const map = {
       clear:    `clear${suffix}.jpg`,
-      cloudy:   `cloudy${suffix}.gif`,
+      cloudy:   `cloudy${suffix}.jpg`,
       fog:      `fog${suffix}.jpg`,
       drizzle:  `drizzle${suffix}.jpg`,
-      rain:     `rain${suffix}.jpg`,
+      rain:     `rain${suffix}.gif`,
       snow:     `snow${suffix}.jpg`,
       thunder:  `thunder${suffix}.jpg`,
     };
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }catch(e){
       console.warn("[Weather] fetch failed:", e);
       // フォールバック（失敗時に見栄えを保つ）
-      setBackground("cloudy_day.gif");
+      setBackground("cloudy_day.jpg");
     }
   }
 
@@ -214,5 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // グローバルに公開（カウントダウン側から呼ぶ）
   window.__weather = { startWeather, stopWeather };
 })();
+
 
 
