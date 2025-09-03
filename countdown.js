@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const suffix = isNight ? "_night" : "_day";
     const map = {
       clear:    `clear${suffix}.jpg`,
-      cloudy:   `cloudy${suffix}.jpg`,
+      cloudy:   `cloudy${suffix}.gif`,
       fog:      `fog${suffix}.jpg`,
       drizzle:  `drizzle${suffix}.jpg`,
       rain:     `rain${suffix}.jpg`,
@@ -214,3 +214,4 @@ document.addEventListener('DOMContentLoaded', function() {
   // グローバルに公開（カウントダウン側から呼ぶ）
   window.__weather = { startWeather, stopWeather };
 })();
+
